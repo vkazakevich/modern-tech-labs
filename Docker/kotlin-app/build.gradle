@@ -1,18 +1,16 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.1.10'
+    id 'application'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+application {
+    mainClass = 'MainKt'                                
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation("org.xerial:sqlite-jdbc:3.49.1.0")
-}
-
-kotlin {
-    jvmToolchain(23)
+    implementation 'org.xerial:sqlite-jdbc:3.49.1.0'
 }

@@ -18,5 +18,7 @@ RUN source "$HOME/.sdkman/bin/sdkman-init.sh" \
     && sdk install kotlin \
     && sdk install gradle
 
-WORKDIR /home
-COPY kotlin-app ./kotlin-app
+COPY kotlin-app ./home/kotlin-app
+WORKDIR /home/kotlin-app
+
+CMD ["gradle", "run"]
