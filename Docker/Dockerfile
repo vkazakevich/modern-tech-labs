@@ -1,7 +1,7 @@
 FROM ubuntu:24.04
 
 RUN apt-get update \
-    && apt-get install -y wget curl unzip zip
+    && apt-get install -y wget curl unzip zip sqlite3
 
 RUN apt install software-properties-common -y
 
@@ -15,4 +15,8 @@ SHELL ["/bin/bash", "-c"]
 
 RUN curl -s "https://get.sdkman.io" | bash
 RUN source "$HOME/.sdkman/bin/sdkman-init.sh" \
-    && sdk install kotlin
+    && sdk install kotlin \
+    && sdk install gradle
+
+WORKDIR /home
+COPY kotlin-app ./kotlin-app
