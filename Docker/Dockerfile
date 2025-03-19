@@ -11,12 +11,17 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
 
 RUN apt-get install -y openjdk-8-jdk
 
-SHELL ["/bin/bash", "-c"] 
+SHELL ["/bin/bash", "-c"]
+
+ENV HOME=/root
 
 RUN curl -s "https://get.sdkman.io" | bash
 RUN source "$HOME/.sdkman/bin/sdkman-init.sh" \
     && sdk install kotlin \
     && sdk install gradle
+
+ENV PATH=$HOME/.sdkman/candidates/kotlin/current/bin:$PATH
+ENV PATH=$HOME/.sdkman/candidates/gradle/current/bin:$PATH
 
 COPY kotlin-app ./home/kotlin-app
 WORKDIR /home/kotlin-app
