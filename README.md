@@ -16,3 +16,19 @@
 Kod: [Docker](./Docker)
 
 Docker Hub: [vkthedev/docker-uni-lab](https://hub.docker.com/r/vkthedev/docker-uni-lab)
+
+
+**Zadanie 2** Scala
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/1f530c99a6ae0702e8aa07464f4d05a25161882a)
+
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/vkazakevich/ebiznes/commit/aede688c92c55328d79e20397fe294d596f30e29)
+
+:x: 4.0 wymaganie 3 [WIP]
+
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/vkazakevich/ebiznes/commit/e78e644b32d17ee4b9eb700c256c08a7a6aa85a4)
+
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/vkazakevich/ebiznes/commit/c69954bc218f0634eb362b5f8dd16fefc4a7df13)
+
+
+Kod: [Scala](./Scala)
