@@ -2,7 +2,9 @@
 *.class
 *.log
 *~
+
 .env
+app.sqlite
 
 # sbt specific
 dist/*
