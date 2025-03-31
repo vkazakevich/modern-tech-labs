@@ -1,5 +1,11 @@
 # Task 2: Scala 3 (Play Framework)
 
+## Demo
+
+https://github.com/user-attachments/assets/192984b4-c419-425b-9d8e-51f56ddfc34f
+
+## Progress
+
 - 3.0 Create a controller for Products ([Commit `1f530c9`](https://github.com/vkazakevich/ebiznes/commit/1f530c99a6ae0702e8aa07464f4d05a25161882a))
 - 3.5 Create endpoints for the controller according to CRUD - data fetched from a list ([Commit `aede688`](https://github.com/vkazakevich/ebiznes/commit/aede688c92c55328d79e20397fe294d596f30e29))
 - 4.0 Create controllers for Categories and Cart + endpoints according to CRUD ([Commit `a60db41`](https://github.com/vkazakevich/ebiznes/commit/a60db416ded2af4c9a5853a11c438ac73a8f2897))
