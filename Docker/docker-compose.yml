@@ -1,3 +1,5 @@
 services:
   kotlin-app:
     build: .
+    volumes:
+      - ./kotlin-app:/home/kotlin-app
