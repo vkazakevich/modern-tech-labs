@@ -24,7 +24,7 @@ Docker Hub: [vkthedev/docker-uni-lab](https://hub.docker.com/r/vkthedev/docker-u
 
 :white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/vkazakevich/ebiznes/commit/aede688c92c55328d79e20397fe294d596f30e29)
 
-:x: 4.0 wymaganie 3 [WIP]
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/vkazakevich/ebiznes/commit/a60db416ded2af4c9a5853a11c438ac73a8f2897)
 
 :white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/vkazakevich/ebiznes/commit/b5679d09b782d25405042dd01b00e61a15b0f537)
 
