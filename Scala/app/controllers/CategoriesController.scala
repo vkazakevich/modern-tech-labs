@@ -4,37 +4,37 @@ import javax.inject._
 import play.api._
 import play.api.mvc._
 import play.api.libs.json._
-import repositories.ProductRepository
-import models.Product
+import repositories.CategoryRepository
+import models.Category
 
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class ProductsController @Inject() (
+class CategoriesController @Inject() (
     val controllerComponents: ControllerComponents,
-    productRepository: ProductRepository
+    categoryRepository: CategoryRepository
 )(implicit ec: ExecutionContext) extends BaseController {
 
   def showAll(): Action[AnyContent] = Action.async { implicit request =>
-    productRepository.list().map { products =>
-      Ok(Json.toJson(products))
+    categoryRepository.list().map { categories =>
+      Ok(Json.toJson(categories))
     }
   }
 
   def showById(id: Int): Action[AnyContent] = Action.async { implicit request =>
-    productRepository.findById(id).map {
-      case Some(product) => Ok(Json.toJson(product))
-      case None => NotFound(Json.obj("error" -> "Product not found"))
+    categoryRepository.findById(id).map {
+      case Some(category) => Ok(Json.toJson(category))
+      case None => NotFound(Json.obj("error" -> "Category not found"))
     }
   }
 
   def add(): Action[JsValue] = Action(parse.json).async { implicit request =>
     request.body
-      .validate[Product]
+      .validate[Category]
       .fold(
         errors => Future.successful(BadRequest(JsError.toJson(errors))),
-        product => {
-          productRepository.create(product).map { created =>
+        category => {
+          categoryRepository.create(category).map { created =>
             Created(Json.toJson(created))
           }
         }
@@ -43,12 +43,12 @@ class ProductsController @Inject() (
 
   def update(id: Int): Action[JsValue] = Action(parse.json).async { implicit request =>
     request.body
-      .validate[Product]
+      .validate[Category]
       .fold(
         errors => Future.successful(BadRequest(JsError.toJson(errors))),
-        product => {
-          productRepository.update(id, product).map {
-            case 0 => NotFound(Json.obj("error" -> "Product not found"))
+        category => {
+          categoryRepository.update(id, category).map {
+            case 0 => NotFound(Json.obj("error" -> "Category not found"))
             case _ => Ok
           }
         }
@@ -56,8 +56,8 @@ class ProductsController @Inject() (
   }
 
   def delete(id: Int): Action[AnyContent] = Action.async {
-    productRepository.delete(id).map {
-      case 0 => NotFound(Json.obj("error" -> "Product not found"))
+    categoryRepository.delete(id).map {
+      case 0 => NotFound(Json.obj("error" -> "Category not found"))
       case _ => NoContent
     }
   }

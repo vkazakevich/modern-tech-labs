@@ -17,7 +17,7 @@ class ProductRepository @Inject()(
   import profile.api._
 
   private class ProductTable(tag: Tag) extends Table[Product](tag, "products") {
-    def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
+    def id = column[Option[Int]]("id", O.PrimaryKey, O.AutoInc)
     def title = column[String]("title")
     def description = column[Option[String]]("description")
     def price = column[BigDecimal]("price")
@@ -40,17 +40,17 @@ class ProductRepository @Inject()(
     products.result
   }
 
-  def findById(id: Long): Future[Option[Product]] = db.run {
+  def findById(id: Int): Future[Option[Product]] = db.run {
     products.filter(_.id === id).result.headOption
   }
-  def update(id: Long, product: Product): Future[Int] = db.run {
+  def update(id: Int, product: Product): Future[Int] = db.run {
     products
       .filter(_.id === id)
       .map(p => (p.title, p.description, p.price))
       .update((product.title, product.description, product.price))
   }
 
-  def delete(id: Long): Future[Int] = db.run {
+  def delete(id: Int): Future[Int] = db.run {
     products.filter(_.id === id).delete
   }
 }

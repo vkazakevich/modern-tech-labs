@@ -9,9 +9,23 @@ GET     /                           controllers.HomeController.index()
 # Products
 GET     /products                   controllers.ProductsController.showAll()
 POST    /products                   controllers.ProductsController.add()
-GET     /products/:id               controllers.ProductsController.showById(id: Long)
-PUT     /products/:id               controllers.ProductsController.update(id: Long)
-DELETE  /products/:id               controllers.ProductsController.delete(id: Long)
+GET     /products/:id               controllers.ProductsController.showById(id: Int)
+PUT     /products/:id               controllers.ProductsController.update(id: Int)
+DELETE  /products/:id               controllers.ProductsController.delete(id: Int)
+
+# Categories
+GET     /categories                   controllers.CategoriesController.showAll()
+POST    /categories                   controllers.CategoriesController.add()
+GET     /categories/:id               controllers.CategoriesController.showById(id: Int)
+PUT     /categories/:id               controllers.CategoriesController.update(id: Int)
+DELETE  /categories/:id               controllers.CategoriesController.delete(id: Int)
+
+# Cart
+GET     /cart                   controllers.CartController.showAll()
+POST    /cart                   controllers.CartController.add()
+GET     /cart/:id               controllers.CartController.showById(id: Int)
+PUT     /cart/:id               controllers.CartController.update(id: Int)
+DELETE  /cart/:id               controllers.CartController.delete(id: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
