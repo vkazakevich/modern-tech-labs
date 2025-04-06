@@ -46,4 +46,4 @@ Kod: [Scala](./Scala)
 :white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/vkazakevich/ebiznes/commit/39bcc29aa963e467f1519f02aaa0a3364a707a57)
 
 
-Kod: [Scala](./Kotlin)
+Kod: [Kotlin](./Kotlin)
