@@ -31,10 +31,21 @@ class DiscordClient (val token: String, val channelId: Long) {
             message.channel.createMessage("pong!")
         }
 
+        kord.on<MessageCreateEvent> {
+            if (message.author?.isBot != false) return@on
+            if (message.content != "!categories") return@on
+
+            message.channel.createMessage(showCategories())
+        }
+
         kord.login {
             @OptIn(PrivilegedIntent::class)
             intents += Intent.MessageContent
         }
+    }
+
+    fun showCategories() : String {
+        return categories.map { it.name }.joinToString(separator = "\n\n")
     }
 
     suspend fun sendMessage(content: String) : String {

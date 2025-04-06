@@ -14,4 +14,4 @@
 1. `cp .env.example .env`
 2. Edit `.env`
 3. `docker build -t kotlin .`
-4. `docker run --rm -it -v "$(pwd)":/home/kotlin-app --env-file .env kotlin /bin/bash`
+4. `docker run --rm -it -v "$(pwd)":/home/kotlin-app --env-file .env kotlin`

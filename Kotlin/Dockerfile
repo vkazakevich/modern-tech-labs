@@ -20,3 +20,5 @@ ENV PATH=/root/.sdkman/candidates/gradle/current/bin:$PATH
 WORKDIR /home/kotlin-app
 
 COPY . .
+
+CMD [ "./gradlew", "run" ]
