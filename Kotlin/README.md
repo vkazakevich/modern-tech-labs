@@ -1,5 +1,8 @@
 # Task 3: Kotlin
 
+## Demo
+
+https://github.com/user-attachments/assets/ee22424e-9654-43de-bab9-c7a17bd169bb
 
 ## Progress
 
