@@ -32,3 +32,18 @@ Docker Hub: [vkthedev/docker-uni-lab](https://hub.docker.com/r/vkthedev/docker-u
 
 
 Kod: [Scala](./Scala)
+
+**Zadanie 3** Kotlin
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/95cfaf83fce5f6123a60b4fa97a5ef5d4aad2900)
+
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/vkazakevich/ebiznes/commit/05f79edd5b9d76ec748e87909a66cc2b3332ea93)
+
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/vkazakevich/ebiznes/commit/1d5e8a5286368b8a857493194d6debb6dfc2f5d9)
+
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/vkazakevich/ebiznes/commit/898c95db5dbd7f7eec561d96714a75511b67d2a5)
+
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/vkazakevich/ebiznes/commit/39bcc29aa963e467f1519f02aaa0a3364a707a57)
+
+
+Kod: [Scala](./Kotlin)
