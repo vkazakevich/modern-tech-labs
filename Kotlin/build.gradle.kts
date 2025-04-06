@@ -26,8 +26,9 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
     implementation("com.typesafe:config:1.4.3")
-
-    // implementation("dev.kord:kord-core:$kdor_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
+    
+    implementation("dev.kord:kord-core:$kdor_version")
 }
 
 kotlin {
