@@ -6,4 +6,7 @@ object Config {
 
     val discordAuthToken: String = config.getString("services.discord.token")
     val discordChannelID: Long = config.getLong("services.discord.channel_id")
+
+    val slackAppToken: String = config.getString("services.slack.app_token")
+    val slackBotToken: String = config.getString("services.slack.bot_token")
 }

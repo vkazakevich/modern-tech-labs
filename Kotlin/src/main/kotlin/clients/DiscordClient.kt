@@ -14,7 +14,7 @@ import dev.kord.gateway.PrivilegedIntent
 import dev.kord.core.behavior.channel.MessageChannelBehavior
 import dev.kord.common.entity.Snowflake
 
-class DiscordClient (val kord: Kord, val channel: MessageChannelBehavior) {
+class DiscordClient (val kord: Kord, val channel: MessageChannelBehavior) : Client() {
     companion object Factory {
         suspend fun create(token: String, channelId: Long) : DiscordClient {
             val kord = Kord(token)
@@ -27,7 +27,7 @@ class DiscordClient (val kord: Kord, val channel: MessageChannelBehavior) {
         }
     }
 
-    suspend fun run() {
+    override suspend fun run() {
         kord.on<MessageCreateEvent> {
             if (message.author?.isBot != false) return@on
 
@@ -35,16 +35,11 @@ class DiscordClient (val kord: Kord, val channel: MessageChannelBehavior) {
 
             when (args.get(0)) {
                 "!ping" -> message.channel.createMessage("pong!")
-                "!categories" -> message.channel.createMessage(getCategories())
+                "!categories" -> message.channel.createMessage(displayCategories())
                 "!category" -> {
-                    val category: Category? = categories.firstOrNull { it.name == args.get(1) }
-
-                    if (category == null) {
-                        message.channel.createMessage("Incorrect category!")
-                        return@on
-                    }
-
-                    message.channel.createMessage(getProductsByCategory(category))
+                    message.channel.createMessage(
+                        displayProductsByCategory(args.get(1))
+                    )
                 }
             }
         }
@@ -55,21 +50,7 @@ class DiscordClient (val kord: Kord, val channel: MessageChannelBehavior) {
         }
     }
 
-    fun getCategories() : String {
-        return categories.map { it.name }.joinToString(separator = "\n")
-    }
-
-    fun getProductsByCategory(category: Category) : String {
-        return products
-            .filter{ it.category == category }
-            .map { "${it.name} (\$${it.price})" }
-            .joinToString(separator = "\n")
-    }
-
     suspend fun sendMessage(content: String) {
         channel.createMessage(content)
     }
 }
-
-@Serializable
-data class DiscordMessage(val content: String)

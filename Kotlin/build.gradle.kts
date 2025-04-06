@@ -8,7 +8,7 @@ group = "org.example"
 version = "1.0-SNAPSHOT"
 
 val ktor_version: String by project
-val kdor_version: String by project
+val kord_version: String by project
 
 application {
     mainClass = "MainKt" 
@@ -20,8 +20,6 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.kord:kord-core:$kdor_version")
-
     implementation("io.ktor:ktor-client-core:$ktor_version")
     implementation("io.ktor:ktor-client-cio:$ktor_version")
     implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
@@ -31,6 +29,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
 
     implementation("com.typesafe:config:1.4.3")
+
+    // Discord
+    implementation("dev.kord:kord-core:$kord_version")
+
+    // Slack
+    implementation("com.slack.api:bolt-socket-mode:1.45.3")
+    implementation("javax.websocket:javax.websocket-api:1.1")
+    implementation("org.glassfish.tyrus.bundles:tyrus-standalone-client:1.20")
 }
 
 kotlin {

@@ -8,7 +8,13 @@ suspend fun main(args: Array<String>) = coroutineScope {
         channelId = Config.discordChannelID
     )
 
+    val slackClient = SlackClient(
+        appToken = Config.slackAppToken, 
+        botToken = Config.slackBotToken
+    )
+
     launch { client.run() }
+    launch { slackClient.run() }
 
     val message = args.getOrNull(0) ?: "Hello everyone!"
     client.sendMessage(message)
