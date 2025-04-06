@@ -11,31 +11,42 @@ import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.on
 import dev.kord.gateway.Intent
 import dev.kord.gateway.PrivilegedIntent
+import dev.kord.core.behavior.channel.MessageChannelBehavior
+import dev.kord.common.entity.Snowflake
 
-const val DISCORD_BASE_URL = "https://discord.com/api/v10"
+class DiscordClient (val kord: Kord, val channel: MessageChannelBehavior) {
+    companion object Factory {
+        suspend fun create(token: String, channelId: Long) : DiscordClient {
+            val kord = Kord(token)
+            val channelSnowflakeId = Snowflake(channelId)
 
-class DiscordClient (val token: String, val channelId: Long) {
-    private val client = HttpClient(CIO) {
-        install(ContentNegotiation) {
-            json()
+            return DiscordClient(
+                Kord(token), 
+                MessageChannelBehavior(channelSnowflakeId, kord)
+            )
         }
     }
 
     suspend fun run() {
-        val kord = Kord(token)
-
         kord.on<MessageCreateEvent> {
             if (message.author?.isBot != false) return@on
-            if (message.content != "!ping") return@on
 
-            message.channel.createMessage("pong!")
-        }
+            val args = message.content.split(" ", limit=2).toList()
 
-        kord.on<MessageCreateEvent> {
-            if (message.author?.isBot != false) return@on
-            if (message.content != "!categories") return@on
+            when (args.get(0)) {
+                "!ping" -> message.channel.createMessage("pong!")
+                "!categories" -> message.channel.createMessage(getCategories())
+                "!category" -> {
+                    val category: Category? = categories.firstOrNull { it.name == args.get(1) }
 
-            message.channel.createMessage(showCategories())
+                    if (category == null) {
+                        message.channel.createMessage("Incorrect category!")
+                        return@on
+                    }
+
+                    message.channel.createMessage(getProductsByCategory(category))
+                }
+            }
         }
 
         kord.login {
@@ -44,20 +55,19 @@ class DiscordClient (val token: String, val channelId: Long) {
         }
     }
 
-    fun showCategories() : String {
-        return categories.map { it.name }.joinToString(separator = "\n\n")
+    fun getCategories() : String {
+        return categories.map { it.name }.joinToString(separator = "\n")
     }
 
-    suspend fun sendMessage(content: String) : String {
-        val response: HttpResponse = client.post(DISCORD_BASE_URL + "/channels/${channelId}/messages") {
-            contentType(ContentType.Application.Json)
-            headers {
-                append(HttpHeaders.Authorization, "Bot ${token}")
-            }
-            setBody(DiscordMessage(content = content))
-        }
+    fun getProductsByCategory(category: Category) : String {
+        return products
+            .filter{ it.category == category }
+            .map { "${it.name} (\$${it.price})" }
+            .joinToString(separator = "\n")
+    }
 
-        return response.status.toString()
+    suspend fun sendMessage(content: String) {
+        channel.createMessage(content)
     }
 }
 

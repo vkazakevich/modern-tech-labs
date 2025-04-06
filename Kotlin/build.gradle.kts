@@ -16,19 +16,21 @@ application {
 
 repositories {
     mavenCentral()
-    // maven("https://repo.kord.dev/snapshots")
+    maven("https://repo.kord.dev/snapshots")
 }
 
 dependencies {
+    implementation("dev.kord:kord-core:$kdor_version")
+
     implementation("io.ktor:ktor-client-core:$ktor_version")
     implementation("io.ktor:ktor-client-cio:$ktor_version")
     implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
-    implementation("com.typesafe:config:1.4.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
-    
-    implementation("dev.kord:kord-core:$kdor_version")
+
+    implementation("com.typesafe:config:1.4.3")
 }
 
 kotlin {
