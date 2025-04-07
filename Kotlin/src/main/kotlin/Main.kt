@@ -1,4 +1,7 @@
 import kotlinx.coroutines.*
+import utils.Seeds
+import clients.ClientFactory
+import clients.ClientPlatform
 
 suspend fun main(args: Array<String>) = coroutineScope {
     Seeds.fill()

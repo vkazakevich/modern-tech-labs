@@ -1,3 +1,10 @@
+package utils
+
+import models.Category
+import models.Product
+import models.categories
+import models.products
+
 object Seeds {
     fun fill() {
         categories.addAll(

@@ -1,3 +1,9 @@
+package clients
+
+import models.Category
+import models.categories
+import models.products
+
 abstract class Client {
     abstract suspend fun run()
 
