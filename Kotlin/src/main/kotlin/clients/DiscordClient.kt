@@ -6,20 +6,10 @@ import dev.kord.gateway.PrivilegedIntent
 import dev.kord.core.behavior.channel.MessageChannelBehavior
 import dev.kord.common.entity.Snowflake
 
-class DiscordClient (val kord: Kord, val channel: MessageChannelBehavior) : Client() {
-    companion object Factory {
-        suspend fun create(token: String, channelId: Long) : DiscordClient {
-            val kord = Kord(token)
-            val channelSnowflakeId = Snowflake(channelId)
-
-            return DiscordClient(
-                Kord(token), 
-                MessageChannelBehavior(channelSnowflakeId, kord)
-            )
-        }
-    }
-
+class DiscordClient (val token: String) : Client() {
     override suspend fun run() {
+        val kord = Kord(token)
+
         kord.on<MessageCreateEvent> {
             if (message.author?.isBot != false) return@on
 
@@ -40,9 +30,5 @@ class DiscordClient (val kord: Kord, val channel: MessageChannelBehavior) : Clie
             @OptIn(PrivilegedIntent::class)
             intents += Intent.MessageContent
         }
-    }
-
-    suspend fun sendMessage(content: String) {
-        channel.createMessage(content)
     }
 }

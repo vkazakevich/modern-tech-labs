@@ -3,21 +3,12 @@ import kotlinx.coroutines.*
 suspend fun main(args: Array<String>) = coroutineScope {
     fillSeeds()
 
-    val client = DiscordClient.create(
-        token = Config.discordAuthToken, 
-        channelId = Config.discordChannelID
-    )
+    val discordClient = ClientFactory.create(ClientPlatform.Discord)
+    val slackClient = ClientFactory.create(ClientPlatform.Slack)
 
-    val slackClient = SlackClient(
-        appToken = Config.slackAppToken, 
-        botToken = Config.slackBotToken
-    )
-
-    launch { client.run() }
-    launch { slackClient.run() }
-
-    val message = args.getOrNull(0) ?: "Hello everyone!"
-    client.sendMessage(message)
+    listOf(discordClient, slackClient).forEach {
+        launch { it.run() }
+    }
 }
 
 fun fillSeeds() {
