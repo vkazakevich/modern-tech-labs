@@ -21,4 +21,4 @@ WORKDIR /home/kotlin-app
 
 COPY . .
 
-CMD [ "./gradlew", "run" ]
+CMD [ "gradle", "run" ]
