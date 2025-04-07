@@ -13,7 +13,7 @@ abstract class Client {
     }
 
     fun displayProductsByCategory(categoryName: String) : String {
-        val category: Category? = categories.firstOrNull { it.name == categoryName }
+        val category: Category? = categories.firstOrNull { it.name.lowercase() == categoryName.lowercase() }
         if (category == null) return "Incorrect category!"
 
         println("Requested products by category ${category.name}")
