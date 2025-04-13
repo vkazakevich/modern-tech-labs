@@ -15,15 +15,15 @@ func main() {
 
 	e.Pre(middleware.RemoveTrailingSlash())
 
-	h := &controllers.Controller{DB: db}
+	с := &controllers.Controller{DB: db}
 
 	product := e.Group("/products")
 
-	product.GET("", h.GetAllProduct)
-	product.POST("", h.CreateProduct)
-	product.GET("/:id", h.FindProduct)
-	product.PUT("/:id", h.UpdateProduct)
-	product.DELETE("/:id", h.DeleteProduct)
+	product.GET("", с.GetAllProduct)
+	product.POST("", с.CreateProduct)
+	product.GET("/:id", с.FindProduct)
+	product.PUT("/:id", с.UpdateProduct)
+	product.DELETE("/:id", с.DeleteProduct)
 
 	e.Logger.Fatal(e.Start(":8000"))
 }
