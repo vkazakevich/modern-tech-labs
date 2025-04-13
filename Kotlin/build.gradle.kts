@@ -8,7 +8,8 @@ group = "org.example"
 version = "1.0-SNAPSHOT"
 
 val ktor_version: String by project
-val kdor_version: String by project
+val kord_version: String by project
+val logback_version: String by project
 
 application {
     mainClass = "MainKt" 
@@ -16,7 +17,7 @@ application {
 
 repositories {
     mavenCentral()
-    // maven("https://repo.kord.dev/snapshots")
+    maven("https://repo.kord.dev/snapshots")
 }
 
 dependencies {
@@ -24,10 +25,21 @@ dependencies {
     implementation("io.ktor:ktor-client-cio:$ktor_version")
     implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+    implementation("io.ktor:ktor-client-logging:$ktor_version")
+
+    implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
+
     implementation("com.typesafe:config:1.4.3")
 
-    // implementation("dev.kord:kord-core:$kdor_version")
+    // Discord
+    implementation("dev.kord:kord-core:$kord_version")
+
+    // Slack
+    implementation("com.slack.api:bolt-socket-mode:1.45.3")
+    implementation("javax.websocket:javax.websocket-api:1.1")
+    implementation("org.glassfish.tyrus.bundles:tyrus-standalone-client:1.20")
 }
 
 kotlin {
