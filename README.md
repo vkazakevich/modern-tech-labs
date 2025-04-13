@@ -33,7 +33,7 @@ Docker Hub: [vkthedev/docker-uni-lab](https://hub.docker.com/r/vkthedev/docker-u
 
 Kod: [Scala](./Scala)
 
-**Zadanie 3** Kotlin
+**Zadanie 3** Kotlin (Ktor)
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/95cfaf83fce5f6123a60b4fa97a5ef5d4aad2900)
 
@@ -47,3 +47,12 @@ Kod: [Scala](./Scala)
 
 
 Kod: [Kotlin](./Kotlin)
+
+**Zadanie 4** Go (Echo) [WIP]
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/ed171ddbe01b5b66926264f7752b138ed02821f4)
+
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/vkazakevich/ebiznes/commit/51f0c3a96cb7fa784117dbffb498ad628e894bfa)
+
+
+Kod: [Go](./Go)
