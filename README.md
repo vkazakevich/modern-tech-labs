@@ -58,5 +58,7 @@ Kod: [Kotlin](./Kotlin)
 
 :white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/vkazakevich/ebiznes/commit/d010fb41b8b6e7d470176b26bc2682610f76561c)
 
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/vkazakevich/ebiznes/commit/c704ef6839550740ba6dbb54922d8cd3ef477ce7)
+
 
 Kod: [Go](./Go)
