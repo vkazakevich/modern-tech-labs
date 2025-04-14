@@ -19,4 +19,11 @@ func ApiRoutes(e *echo.Echo, с *controllers.Controller) {
 	cart.GET("/:id", с.FindCartItem)
 	cart.PUT("/:id", с.UpdateCartItem)
 	cart.DELETE("/:id", с.DeleteCartItem)
+
+	cat := e.Group("/categories")
+	cat.GET("", с.GetAllCategories)
+	cat.POST("", с.CreateCategory)
+	cat.GET("/:id", с.FindCategory)
+	cat.PUT("/:id", с.UpdateCategory)
+	cat.DELETE("/:id", с.DeleteCategory)
 }

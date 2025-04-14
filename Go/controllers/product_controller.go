@@ -22,7 +22,12 @@ func (с *Controller) CreateProduct(ctx echo.Context) error {
 		return nil
 	}
 
-	p := models.Product{Name: dto.Name, Quantity: dto.Quantity, Price: dto.Price}
+	p := models.Product{
+		Name:       dto.Name,
+		Quantity:   dto.Quantity,
+		Price:      dto.Price,
+		CategoryID: dto.CategoryID,
+	}
 	с.DB.Create(&p)
 
 	return ctx.JSON(http.StatusAccepted, p)
@@ -51,6 +56,7 @@ func (c *Controller) UpdateProduct(ctx echo.Context) error {
 	p.Name = dto.Name
 	p.Quantity = dto.Quantity
 	p.Price = dto.Price
+	p.CategoryID = dto.CategoryID
 
 	c.DB.Save(&p)
 
