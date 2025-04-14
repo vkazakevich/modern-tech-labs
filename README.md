@@ -48,7 +48,7 @@ Kod: [Scala](./Scala)
 
 Kod: [Kotlin](./Kotlin)
 
-**Zadanie 4** Go (Echo) [WIP]
+**Zadanie 4** Go (Echo)
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/ed171ddbe01b5b66926264f7752b138ed02821f4)
 
