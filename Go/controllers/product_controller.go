@@ -10,10 +10,10 @@ import (
 )
 
 func (с *Controller) GetAllProduct(ctx echo.Context) error {
-	var productsDB []models.Product
-	с.DB.Find(&productsDB)
+	var products []models.Product
+	с.DB.Find(&products)
 
-	return ctx.JSON(http.StatusOK, productsDB)
+	return ctx.JSON(http.StatusOK, products)
 }
 
 func (с *Controller) CreateProduct(ctx echo.Context) error {

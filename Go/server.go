@@ -6,24 +6,17 @@ import (
 
 	"github.com/vkazakevich/ebiznes/Go/controllers"
 	"github.com/vkazakevich/ebiznes/Go/db"
+	"github.com/vkazakevich/ebiznes/Go/routes"
 )
 
 func main() {
 	db := db.InitDatabase()
 
 	e := echo.New()
-
 	e.Pre(middleware.RemoveTrailingSlash())
 
 	с := &controllers.Controller{DB: db}
-
-	product := e.Group("/products")
-
-	product.GET("", с.GetAllProduct)
-	product.POST("", с.CreateProduct)
-	product.GET("/:id", с.FindProduct)
-	product.PUT("/:id", с.UpdateProduct)
-	product.DELETE("/:id", с.DeleteProduct)
+	routes.ApiRoutes(e, с)
 
 	e.Logger.Fatal(e.Start(":8000"))
 }
