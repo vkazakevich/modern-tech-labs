@@ -12,7 +12,7 @@ import (
 func (с *Controller) GetAllCategories(ctx echo.Context) error {
 	var categories []models.Category
 
-	if ctx.QueryParam("hasProducts") == "1" {
+	if ctx.QueryParam("only_with_products") == "1" {
 		с.DB.Scopes(models.WithProducts, models.HasProducts).Find(&categories)
 	} else {
 		с.DB.Scopes(models.WithProducts).Find(&categories)
