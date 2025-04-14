@@ -8,3 +8,7 @@ type Cart struct {
 	ProductID uint
 	Product   Product
 }
+
+func WithProduct(db *gorm.DB) *gorm.DB {
+	return db.Preload("Product")
+}

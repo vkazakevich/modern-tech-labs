@@ -11,7 +11,7 @@ import (
 
 func (с *Controller) GetAllCartItems(ctx echo.Context) error {
 	var cartItems []models.Cart
-	с.DB.Preload("Product").Find(&cartItems)
+	с.DB.Scopes(models.WithProduct).Find(&cartItems)
 
 	return ctx.JSON(http.StatusOK, cartItems)
 }
@@ -69,7 +69,7 @@ func (c *Controller) DeleteCartItem(ctx echo.Context) error {
 
 func findCartItem(ctx echo.Context, c *Controller) (*models.Cart, error) {
 	var cart models.Cart
-	results := c.DB.Preload("Product").First(&cart, ctx.Param("id"))
+	results := c.DB.Scopes(models.WithProduct).First(&cart, ctx.Param("id"))
 
 	if results.Error != nil {
 		_ = ctx.String(http.StatusNotFound, "not found")

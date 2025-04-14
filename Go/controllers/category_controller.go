@@ -11,7 +11,12 @@ import (
 
 func (с *Controller) GetAllCategories(ctx echo.Context) error {
 	var categories []models.Category
-	с.DB.Preload("Product").Find(&categories)
+
+	if ctx.QueryParam("hasProducts") == "1" {
+		с.DB.Scopes(models.WithProducts, models.HasProducts).Find(&categories)
+	} else {
+		с.DB.Scopes(models.WithProducts).Find(&categories)
+	}
 
 	return ctx.JSON(http.StatusOK, categories)
 }
@@ -67,7 +72,7 @@ func (c *Controller) DeleteCategory(ctx echo.Context) error {
 
 func findCategory(ctx echo.Context, c *Controller) (*models.Category, error) {
 	var cat models.Category
-	results := c.DB.Preload("Products").First(&cat, ctx.Param("id"))
+	results := c.DB.Scopes(models.WithProducts).First(&cat, ctx.Param("id"))
 
 	if results.Error != nil {
 		_ = ctx.String(http.StatusNotFound, "not found")
