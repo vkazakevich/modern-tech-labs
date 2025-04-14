@@ -10,7 +10,7 @@ type Cart struct {
 	Product   Product
 
 	CustomerID uint
-	Customer   Product
+	Customer   Customer
 }
 
 func WithProduct(db *gorm.DB) *gorm.DB {
