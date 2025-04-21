@@ -6,10 +6,5 @@ type Payment struct {
 	gorm.Model
 
 	IsPaid bool
-
-	CartID uint
-	Cart   Cart
-
-	CustomerID uint
-	Customer   Customer
+	Amount uint
 }

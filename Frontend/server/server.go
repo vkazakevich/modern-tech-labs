@@ -25,7 +25,8 @@ func main() {
 
 	e := echo.New()
 	e.Pre(middleware.RemoveTrailingSlash())
-
+	e.Use(middleware.CORS())
+	
 	с := &controllers.Controller{DB: db}
 	routes.ApiRoutes(e, с)
 

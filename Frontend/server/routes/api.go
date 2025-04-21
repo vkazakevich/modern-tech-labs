@@ -26,4 +26,7 @@ func ApiRoutes(e *echo.Echo, с *controllers.Controller) {
 	cat.GET("/:id", с.FindCategory)
 	cat.PUT("/:id", с.UpdateCategory)
 	cat.DELETE("/:id", с.DeleteCategory)
+
+	p := e.Group("/payments")
+	p.POST("", с.CreatePayment)
 }
