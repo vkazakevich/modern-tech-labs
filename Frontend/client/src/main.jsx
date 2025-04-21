@@ -6,6 +6,8 @@ import Payments from './components/Payments.jsx'
 import Cart from './components/Cart.jsx'
 import { CartProvider } from './contexts/CartContext.jsx'
 
+import './plugins'
+
 createRoot(document.getElementById('root')).render(
   <CartProvider>
     <BrowserRouter>

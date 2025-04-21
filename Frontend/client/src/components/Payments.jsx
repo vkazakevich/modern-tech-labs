@@ -1,22 +1,16 @@
 import { useState } from 'react'
+import { makePayment } from '../api/payments'
 
 function Payments() {
   const [amount, setAmount] = useState(0)
 
   async function payment(e) {
     e.preventDefault()
-
-    const response = await fetch('http://localhost:8000/payments/', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ amount: +amount }),
-    })
-
-    if (response.ok) {
+    try {
+      await makePayment({ amount: +amount })
       alert('Success!')
+    } catch (err) {
+      //
     }
   }
 

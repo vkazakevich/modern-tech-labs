@@ -25,8 +25,11 @@ func main() {
 
 	e := echo.New()
 	e.Pre(middleware.RemoveTrailingSlash())
-	e.Use(middleware.CORS())
-	
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+        AllowOrigins: []string{"http://localhost:5173"},
+        AllowMethods: []string{"GET", "POST"}
+    }))
+
 	с := &controllers.Controller{DB: db}
 	routes.ApiRoutes(e, с)
 

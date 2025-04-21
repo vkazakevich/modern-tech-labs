@@ -1,13 +1,6 @@
-export const getProducts = async function () {
-  const url = 'http://localhost:8000/products/'
+import axios from 'axios'
 
-  try {
-    const response = await fetch(url)
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`)
-    }
-    return await response.json()
-  } catch (error) {
-    console.error(error)
-  }
+export const getProducts = async function () {
+  const { data } = await axios.get('/products')
+  return data
 }
