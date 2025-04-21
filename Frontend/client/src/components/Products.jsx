@@ -1,37 +1,57 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
+import { getProducts } from '../api/products'
 
 function Products() {
   const [products, setProducts] = useState([])
+  const [cartItemsCount, setCartItemsCount] = useState(0)
 
-  async function getProducts() {
-    const url = 'http://localhost:8000/products/'
-    try {
-      const response = await fetch(url)
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`)
-      }
-      const products = await response.json()
-      setProducts(products)
-    } catch (error) {
-      console.error(error)
-    }
+  function getCartProductIds() {
+    return JSON.parse(localStorage.getItem('cart_product_ids')) || []
+  }
+
+  function setCartProductIds(cartProductIds) {
+    localStorage.setItem('cart_product_ids', JSON.stringify(cartProductIds))
+  }
+
+  async function addToCart(productId) {
+    const cartProductIds = getCartProductIds()
+    cartProductIds.push(productId)
+
+    setCartProductIds(cartProductIds)
+    setCartItemsCount((current) => current + 1)
+  }
+
+  async function loadProducts() {
+    const products = await getProducts()
+    setProducts(products)
   }
 
   useEffect(() => {
-    getProducts()
+    setCartItemsCount(getCartProductIds().length)
+    loadProducts()
   }, [])
 
   return (
     <>
       <h1>Products</h1>
+      <div>
+        Products in cart: {cartItemsCount}
+        <br />
+        <Link to="/cart">Cart</Link>
+      </div>
       <ul>
         {products.map((product) => (
-          <li>
+          <li key={product.ID}>
             {product.name}
             <br />
             Price: {product.price}
             <br />
             Quantity: {product.quantity}
+            <br />
+            <button onClick={() => addToCart(product.ID)}>Add to Cart</button>
+            <br />
+            <br />
           </li>
         ))}
       </ul>
