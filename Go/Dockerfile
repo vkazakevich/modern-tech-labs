@@ -4,7 +4,7 @@ WORKDIR /home/app
 
 RUN go install github.com/air-verse/air@latest
 
-EXPOSE 1323
+EXPOSE 8000
 
 COPY . .
 
