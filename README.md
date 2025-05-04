@@ -77,3 +77,12 @@ Kod: [Go](./Go)
 
 
 Kod: [Frontend](./Frontend)
+
+**Zadanie 6** Tests (WIP)
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/16d353aaad9efb62d78db446d04d2dcc6ad68cfd)
+
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/vkazakevich/ebiznes/commit/b106f4c3b801596bc2a4992d399a27f23d653df3)
+
+
+Kod: [Tests](./Tests)
