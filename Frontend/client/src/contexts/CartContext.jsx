@@ -25,6 +25,11 @@ export const CartProvider = ({ children, ...props }) => {
     setCartProductIds(items)
   }
 
+  const emptyCart = () => {
+    setCartItems([])
+    setCartProductIds([])
+  }
+
   const cartItemsCount = cartItems.length
 
   const value = {
@@ -32,6 +37,7 @@ export const CartProvider = ({ children, ...props }) => {
     cartItemsCount,
 
     addProductToCart,
+    emptyCart,
   }
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>

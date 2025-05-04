@@ -2,20 +2,20 @@ import { useEffect, useState } from 'react'
 import { makePayment } from '../api/payments'
 import { useCart } from '../hooks/useCart'
 import { getProducts } from '../api/products'
+import { useNavigate } from 'react-router'
 
 function Payments() {
-  const { cartItems } = useCart()
+  const navigate = useNavigate()
+  const { cartItems, emptyCart } = useCart()
   const [amount, setAmount] = useState(null)
 
   useEffect(() => {
     const calcAmount = async () => {
       const products = await getProducts()
 
-      return cartItems.reduce((acc, currentProductId) => {
-        const product = products.find(
-          (product) => product.ID == currentProductId
-        )
-        return acc + product?.price
+      return cartItems.reduce((acc, current) => {
+        const product = products.find((p) => p.ID === current)
+        return product ? (acc += product.price) : acc
       }, 0)
     }
 
@@ -27,10 +27,14 @@ function Payments() {
     try {
       await makePayment({ amount: +amount })
       alert(`Success payment $${amount}`)
+      emptyCart()
+      navigate('/')
     } catch (err) {
       //
     }
   }
+
+  if (!cartItems.length) return <>Cart is empty!</>
 
   return (
     <>
@@ -39,7 +43,7 @@ function Payments() {
         {amount ? (
           <form onSubmit={payment}>
             <p>
-              Final amount: 
+              Final amount:
               <strong> ${amount}</strong>
             </p>
             <button type="submit">Pay</button>

@@ -21,7 +21,7 @@ function Cart() {
     if (!product) return <></>
 
     return (
-      <li>
+      <li key={product.ID}>
         Product: {product.name} | Price: ${product.price}
       </li>
     )
