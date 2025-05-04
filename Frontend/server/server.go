@@ -27,7 +27,7 @@ func main() {
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
         AllowOrigins: []string{"http://localhost:5173"},
-        AllowMethods: []string{"GET", "POST"}
+        AllowMethods: []string{"GET", "POST"},
     }))
 
 	с := &controllers.Controller{DB: db}

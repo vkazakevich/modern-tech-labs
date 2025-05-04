@@ -4,10 +4,10 @@ WORKDIR /home/app
 
 RUN go install github.com/air-verse/air@latest
 
-EXPOSE 1323
-
 COPY . .
 
 RUN go build server.go
+
+EXPOSE 8000
 
 CMD ["air", "-c", ".air.toml"]
