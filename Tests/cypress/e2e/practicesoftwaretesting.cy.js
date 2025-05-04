@@ -33,6 +33,22 @@ describe('toolshop', () => {
     cy.location('pathname').should('eq', '/auth/login')
   })
 
+  it('nav: lang EN', () => {
+    cy.visit('https://practicesoftwaretesting.com/')
+
+    cy.get('[data-test="language-select"]').click()
+    cy.get('[data-test="lang-en"]').click()
+
+    cy.get('.container-fluid').contains('This is a DEMO application')
+
+    cy.get('#filters').contains("Sort")
+    cy.get('#filters').contains("Price Range")
+    cy.get('#filters').contains("Search")
+    cy.get('#filters').contains("Filters")
+    cy.get('#filters').contains("By category")
+    cy.get('#filters').contains("By brand")
+  })
+
   it('nav: lang DE', () => {
     cy.visit('https://practicesoftwaretesting.com/')
 
@@ -40,6 +56,13 @@ describe('toolshop', () => {
     cy.get('[data-test="lang-de"]').click()
 
     cy.get('.container-fluid').contains('Das ist eine Demo Applikation')
+
+    cy.get('#filters').contains("Sortieren")
+    cy.get('#filters').contains("Preisspanne")
+    cy.get('#filters').contains("Suche")
+    cy.get('#filters').contains("Filter")
+    cy.get('#filters').contains("Nach Kategorie")
+    cy.get('#filters').contains("Nach Marken")
   })
 
   it('nav: lang ES', () => {
@@ -49,6 +72,13 @@ describe('toolshop', () => {
     cy.get('[data-test="lang-es"]').click()
 
     cy.get('.container-fluid').contains('Esta es una aplicación DEMO')
+
+    cy.get('#filters').contains("Ordenar")
+    cy.get('#filters').contains("Rango de precios")
+    cy.get('#filters').contains("Buscar")
+    cy.get('#filters').contains("Filtros")
+    cy.get('#filters').contains("Por categoría")
+    cy.get('#filters').contains("Por marca")
   })
 
   it('nav: lang FR', () => {
@@ -58,6 +88,13 @@ describe('toolshop', () => {
     cy.get('[data-test="lang-fr"]').click()
 
     cy.get('.container-fluid').contains('Ceci est une application de démonstration')
+
+    cy.get('#filters').contains("Trier")
+    cy.get('#filters').contains("Fourchette de prix")
+    cy.get('#filters').contains("Rechercher")
+    cy.get('#filters').contains("Filtres")
+    cy.get('#filters').contains("Par catégorie")
+    cy.get('#filters').contains("Par marque")
   })
 
   it('nav: lang NL', () => {
@@ -67,6 +104,13 @@ describe('toolshop', () => {
     cy.get('[data-test="lang-nl"]').click()
 
     cy.get('.container-fluid').contains('Dit is een DEMO-applicatie')
+
+    cy.get('#filters').contains("Sorteren")
+    cy.get('#filters').contains("Prijsklasse")
+    cy.get('#filters').contains("Zoeken")
+    cy.get('#filters').contains("Filter")
+    cy.get('#filters').contains("Op categorie")
+    cy.get('#filters').contains("Op merk")
   })
 
   it('nav: lang TR', () => {
@@ -76,6 +120,13 @@ describe('toolshop', () => {
     cy.get('[data-test="lang-tr"]').click()
 
     cy.get('.container-fluid').contains('Bu bir DEMO uygulamasıdır')
+
+    cy.get('#filters').contains("Sırala")
+    cy.get('#filters').contains("Fiyat Aralığı")
+    cy.get('#filters').contains("Ara")
+    cy.get('#filters').contains("Filtreler")
+    cy.get('#filters').contains("Kategoriye göre")
+    cy.get('#filters').contains("Markaya göre")
   })
 
   it('privacy policy', () => {
