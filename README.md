@@ -78,7 +78,7 @@ Kod: [Go](./Go)
 
 Kod: [Frontend](./Frontend)
 
-**Zadanie 6** Tests (WIP)
+**Zadanie 6** Tests
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/16d353aaad9efb62d78db446d04d2dcc6ad68cfd)
 
@@ -87,6 +87,8 @@ Kod: [Frontend](./Frontend)
 :white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/vkazakevich/ebiznes/commit/f5cff2993174c0117bc43c96235dbc0a0fb425fa#diff-3b9d313f8466c491f3374d5f3c3d33ae50878b091a785d1d83c49dcce7f93ebc)
 
 :white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/vkazakevich/ebiznes/commit/8c561c313730e4493654b5d22e90d6dfab982dd3)
+
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/vkazakevich/ebiznes/commit/80ccfe5e9914c8b7127de207f6eaaa052efb2be1)
 
 
 Kod: [Tests](./Tests)
