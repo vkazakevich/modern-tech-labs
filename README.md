@@ -84,5 +84,7 @@ Kod: [Frontend](./Frontend)
 
 :white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/vkazakevich/ebiznes/commit/b106f4c3b801596bc2a4992d399a27f23d653df3)
 
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/vkazakevich/ebiznes/commit/f5cff2993174c0117bc43c96235dbc0a0fb425fa#diff-3b9d313f8466c491f3374d5f3c3d33ae50878b091a785d1d83c49dcce7f93ebc)
+
 
 Kod: [Tests](./Tests)
