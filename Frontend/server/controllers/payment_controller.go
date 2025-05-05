@@ -15,6 +15,10 @@ func (с *Controller) CreatePayment(ctx echo.Context) error {
 		return ctx.String(http.StatusBadRequest, "bad request")
 	}
 
+	if dto.Amount <= 0 {
+		return ctx.String(http.StatusBadRequest, "bad request")
+	}
+
 	p := models.Payment{Amount: dto.Amount}
 	с.DB.Create(&p)
 
