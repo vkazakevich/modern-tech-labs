@@ -17,7 +17,8 @@ func main() {
 	flag.BoolVar(&fillSeeds, "seed", false, "a bool")
 	flag.Parse()
 
-	db := db.InitDatabase()
+	db := db.InitDB()
+	utils.MigrateDB(db)
 
 	if fillSeeds {
 		utils.FillDBSeeds(db)
