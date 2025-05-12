@@ -17,9 +17,11 @@ var (
 	updatedProductJSON = `{"name": "Updated Test Product", "price": 100, "quantity": 5}`
 )
 
+const ENTITY_URL = "/products"
+
 func TestCreateProduct(t *testing.T) {
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodPost, "/products", strings.NewReader(productJSON))
+	req := httptest.NewRequest(http.MethodPost, ENTITY_URL, strings.NewReader(productJSON))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
@@ -38,7 +40,7 @@ func TestCreateProduct(t *testing.T) {
 
 func TestGetAllProduct(t *testing.T) {
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodGet, "/products", nil)
+	req := httptest.NewRequest(http.MethodGet, ENTITY_URL, nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	controller := &Controller{DB: mockDB}
@@ -56,7 +58,7 @@ func TestGetAllProduct(t *testing.T) {
 
 func TestFindProduct(t *testing.T) {
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodGet, "/products", nil)
+	req := httptest.NewRequest(http.MethodGet, ENTITY_URL, nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	c.SetPath("/:id")
@@ -77,7 +79,7 @@ func TestFindProduct(t *testing.T) {
 
 func TestFindProductNotFoundError(t *testing.T) {
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodGet, "/products", nil)
+	req := httptest.NewRequest(http.MethodGet, ENTITY_URL, nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	c.SetPath("/:id")
@@ -92,7 +94,7 @@ func TestFindProductNotFoundError(t *testing.T) {
 
 func TestUpdateProduct(t *testing.T) {
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodPut, "/products", strings.NewReader(updatedProductJSON))
+	req := httptest.NewRequest(http.MethodPut, ENTITY_URL, strings.NewReader(updatedProductJSON))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
@@ -114,7 +116,7 @@ func TestUpdateProduct(t *testing.T) {
 
 func TestDeleteProduct(t *testing.T) {
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodDelete, "/products", nil)
+	req := httptest.NewRequest(http.MethodDelete, ENTITY_URL, nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	c.SetPath("/:id")
