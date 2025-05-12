@@ -92,3 +92,7 @@ Kod: [Frontend](./Frontend)
 
 
 Kod: [Tests](./Tests)
+
+**Zadanie 7** Sonar
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/ee91b9444059bbd8b2928cd23b39f99d388b4590)
