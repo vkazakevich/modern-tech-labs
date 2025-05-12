@@ -23,7 +23,7 @@ func TestCartDto (t *testing.T) {
 	assert.Equal(t, uint(9999), dto.Quantity)
 }
 
-func TestCartDto_Model(t *testing.T) {
+func TestCartDtoModel(t *testing.T) {
 	db := setupTestDB()
 	dto := fakeCartDto()
 

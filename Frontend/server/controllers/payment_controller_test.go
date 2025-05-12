@@ -32,7 +32,7 @@ func TestCreatePayment(t *testing.T) {
 	}
 }
 
-func TestCreatePayment_WithError(t *testing.T) {
+func TestCreatePaymentWithError(t *testing.T) {
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodPost, "/payments", nil)
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)

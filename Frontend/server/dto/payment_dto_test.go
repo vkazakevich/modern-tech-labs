@@ -19,7 +19,7 @@ func TestPaymentDto (t *testing.T) {
 	assert.Equal(t, uint(10000000), dto.Amount)
 }
 
-func TestPaymentDto_Model(t *testing.T) {
+func TestPaymentDtoModel(t *testing.T) {
 	db := setupTestDB()
 	dto := fakePaymentDto()
 

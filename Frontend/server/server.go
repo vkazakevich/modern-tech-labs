@@ -31,8 +31,8 @@ func main() {
         AllowMethods: []string{"GET", "POST"},
     }))
 
-	с := &controllers.Controller{DB: db}
-	routes.ApiRoutes(e, с)
+	c := &controllers.Controller{DB: db}
+	routes.ApiRoutes(e, c)
 
 	e.Logger.Fatal(e.Start(":8000"))
 }

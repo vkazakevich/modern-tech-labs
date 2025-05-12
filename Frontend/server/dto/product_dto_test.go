@@ -27,7 +27,7 @@ func TestProductDto (t *testing.T) {
 	assert.Equal(t, uint(1), dto.CategoryID)
 }
 
-func TestProductDto_Model(t *testing.T) {
+func TestProductDtoModel(t *testing.T) {
 	dto := fakeProductDto()
 	db := setupTestDB()
 

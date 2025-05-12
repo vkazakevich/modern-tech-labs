@@ -75,7 +75,7 @@ func TestFindProduct(t *testing.T) {
 	}
 }
 
-func TestFindProduct_NotFoundError(t *testing.T) {
+func TestFindProductNotFoundError(t *testing.T) {
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, "/products", nil)
 	rec := httptest.NewRecorder()

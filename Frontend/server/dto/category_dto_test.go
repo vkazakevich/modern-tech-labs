@@ -21,7 +21,7 @@ func TestCategoryDto (t *testing.T) {
 	assert.Equal(t, "Test Category", dto.Name)
 }
 
-func TestCategoryDto_Model(t *testing.T) {
+func TestCategoryDtoModel(t *testing.T) {
 	db := setupTestDB()
 	dto := fakeCategoryDto()
 
