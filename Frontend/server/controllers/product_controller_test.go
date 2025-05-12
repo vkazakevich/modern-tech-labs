@@ -27,10 +27,12 @@ func TestCreateProduct(t *testing.T) {
 
 	if assert.NoError(t, controller.CreateProduct(c)) {
 		var resp map[string]interface{}
-		json.Unmarshal(rec.Body.Bytes(), &resp)
+		err := json.Unmarshal(rec.Body.Bytes(), &resp)
 
-		assert.Equal(t, http.StatusAccepted, rec.Code)
-		assert.Equal(t, "Test Product", resp["name"])
+		if assert.NoError(t, err) {
+			assert.Equal(t, http.StatusAccepted, rec.Code)
+			assert.Equal(t, "Test Product", resp["name"])
+		}
 	}
 }
 
@@ -43,10 +45,12 @@ func TestGetAllProduct(t *testing.T) {
 
 	if assert.NoError(t, controller.GetAllProduct(c)) {
 		var resp []map[string]interface{}
-		json.Unmarshal(rec.Body.Bytes(), &resp)
+		err := json.Unmarshal(rec.Body.Bytes(), &resp)
 
-		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.Greater(t, len(resp), 0)
+		if assert.NoError(t, err) {
+			assert.Equal(t, http.StatusOK, rec.Code)
+			assert.Greater(t, len(resp), 0)
+		}
 	}
 }
 
@@ -62,10 +66,12 @@ func TestFindProduct(t *testing.T) {
 
 	if assert.NoError(t, controller.FindProduct(c)) {
 		var resp map[string]interface{}
-		json.Unmarshal(rec.Body.Bytes(), &resp)
+		err := json.Unmarshal(rec.Body.Bytes(), &resp)
 
-		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.Greater(t, resp["ID"], float64(0))
+		if assert.NoError(t, err) {
+			assert.Equal(t, http.StatusOK, rec.Code)
+			assert.Greater(t, resp["ID"], float64(0))
+		}
 	}
 }
 
@@ -97,10 +103,12 @@ func TestUpdateProduct(t *testing.T) {
 
 	if assert.NoError(t, controller.UpdateProduct(c)) {
 		var resp map[string]interface{}
-		json.Unmarshal(rec.Body.Bytes(), &resp)
+		err := json.Unmarshal(rec.Body.Bytes(), &resp)
 
-		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.Equal(t, "Updated Test Product", resp["name"])
+		if assert.NoError(t, err) {
+			assert.Equal(t, http.StatusOK, rec.Code)
+			assert.Equal(t, "Updated Test Product", resp["name"])
+		}
 	}
 }
 

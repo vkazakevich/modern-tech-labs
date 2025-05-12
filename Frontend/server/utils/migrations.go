@@ -6,11 +6,15 @@ import (
 )
 
 func MigrateDB(db *gorm.DB) {
-	db.AutoMigrate(
+	err := db.AutoMigrate(
 		&models.Product{},
 		&models.Cart{},
 		&models.Category{},
 		&models.Customer{},
 		&models.Payment{},
 	)
+
+	if err != nil {
+		panic("failed to migrate database")
+	}
 }

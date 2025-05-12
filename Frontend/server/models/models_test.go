@@ -8,13 +8,17 @@ import (
 func setupTestDB() *gorm.DB {
 	db := db.InitTestDB()
 	
-	db.AutoMigrate(
+	err := db.AutoMigrate(
 		&Product{},
 		&Cart{},
 		&Category{},
 		&Customer{},
 		&Payment{},
 	)
+
+	if err != nil {
+		panic("failed to migrate database")
+	}
 
 	return db
 }

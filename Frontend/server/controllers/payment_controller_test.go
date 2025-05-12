@@ -23,10 +23,12 @@ func TestCreatePayment(t *testing.T) {
 
 	if assert.NoError(t, controller.CreatePayment(c)) {
 		var resp map[string]interface{}
-		json.Unmarshal(rec.Body.Bytes(), &resp)
+		err := json.Unmarshal(rec.Body.Bytes(), &resp)
 
-		assert.Equal(t, http.StatusAccepted, rec.Code)
-		assert.Equal(t, float64(1000), resp["Amount"])
+		if assert.NoError(t, err) {
+			assert.Equal(t, http.StatusAccepted, rec.Code)
+			assert.Equal(t, float64(1000), resp["Amount"])
+		}
 	}
 }
 
