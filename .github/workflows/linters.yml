@@ -2,8 +2,8 @@ name: Run Linters
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'Frontend/server'
 
 env:
   GO_VERSION: stable
