@@ -14,5 +14,5 @@ func ApiRoutes(e *echo.Echo, c *controllers.Controller) {
 	product.DELETE("/:id", c.DeleteProduct)
 
 	p := e.Group("/payments")
-	p.POST("", с.CreatePayment)
+	p.POST("", c.CreatePayment)
 }
