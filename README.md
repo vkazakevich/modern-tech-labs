@@ -1,5 +1,7 @@
 # ebiznes labs
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vkazakevich_sonar-server&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vkazakevich_sonar-server)
+
 **Zadanie 1** Docker
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/9207da75fb44a75fe965ff01cb1abfdf9971c43f)
@@ -96,3 +98,9 @@ Kod: [Tests](./Tests)
 **Zadanie 7** Sonar
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/ee91b9444059bbd8b2928cd23b39f99d388b4590)
+
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/vkazakevich/sonar-server/commit/3ceeb97ff28d3b974c636a6aafc08269b15681c7)
+
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/vkazakevich/sonar-server/commit/3ceeb97ff28d3b974c636a6aafc08269b15681c7)
+
+:white_check_mark: 4.5 wymaganie 3 [Link do commita 4](https://github.com/vkazakevich/sonar-server/commit/3ceeb97ff28d3b974c636a6aafc08269b15681c7)
