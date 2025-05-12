@@ -38,7 +38,7 @@ function Cart() {
             Total: $
             {cartItems.reduce((acc, current) => {
               const product = products.find((p) => p.ID === current)
-              return product ? (acc += product.price) : acc
+              return product ? (acc + product.price) : acc
             }, 0)}
           </p>
           <p>

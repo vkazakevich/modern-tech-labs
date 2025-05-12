@@ -1,10 +1,11 @@
-import { createContext, useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
 
 const LOCAL_STORAGE_KEY = 'cart_product_ids'
 
 export const CartContext = createContext([])
 
-export const CartProvider = ({ children, ...props }) => {
+export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([])
 
   function getCartProductIds() {
@@ -19,26 +20,35 @@ export const CartProvider = ({ children, ...props }) => {
     setCartItems(getCartProductIds())
   }, [])
 
-  const addProductToCart = async (productId) => {
-    const items = [...cartItems, productId]
-    setCartItems(items)
-    setCartProductIds(items)
-  }
+  const addProductToCart = useCallback(
+    async (productId) => {
+      const items = [...cartItems, productId]
+      setCartItems(items)
+      setCartProductIds(items)
+    },
+    [cartItems]
+  )
 
-  const emptyCart = () => {
+  const emptyCart = useCallback(() => {
     setCartItems([])
     setCartProductIds([])
-  }
+  }, [])
 
   const cartItemsCount = cartItems.length
 
-  const value = {
-    cartItems,
-    cartItemsCount,
-
-    addProductToCart,
-    emptyCart,
-  }
+  const value = useMemo(
+    () => ({
+      cartItems,
+      cartItemsCount,
+      addProductToCart,
+      emptyCart
+    }),
+    [cartItems, cartItemsCount, addProductToCart, emptyCart]
+  )
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
+}
+
+CartProvider.propTypes = {
+  children: PropTypes.node.isRequired
 }

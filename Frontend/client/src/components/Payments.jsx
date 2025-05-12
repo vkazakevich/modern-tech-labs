@@ -9,17 +9,17 @@ function Payments() {
   const { cartItems, emptyCart } = useCart()
   const [amount, setAmount] = useState(null)
 
+  const calcAmount = (products) => {
+    const result = cartItems.reduce((acc, current) => {
+      const product = products.find((p) => p.ID === current)
+      return product ? acc + product.price : acc
+    }, 0)
+
+    setAmount(result)
+  }
+
   useEffect(() => {
-    const calcAmount = async () => {
-      const products = await getProducts()
-
-      return cartItems.reduce((acc, current) => {
-        const product = products.find((p) => p.ID === current)
-        return product ? (acc += product.price) : acc
-      }, 0)
-    }
-
-    calcAmount().then((finalAmount) => setAmount(finalAmount))
+    getProducts().then((products) => calcAmount(products))
   }, [cartItems])
 
   async function payment(e) {
@@ -30,7 +30,7 @@ function Payments() {
       emptyCart()
       navigate('/')
     } catch (err) {
-      //
+      alert(`Error: ${err}`)
     }
   }
 
@@ -43,8 +43,7 @@ function Payments() {
         {amount ? (
           <form onSubmit={payment}>
             <p>
-              Final amount:
-              <strong> ${amount}</strong>
+              Final amount: <strong> ${amount}</strong>
             </p>
             <button type="submit">Pay</button>
           </form>
