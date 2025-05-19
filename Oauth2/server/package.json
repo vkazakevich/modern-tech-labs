@@ -6,9 +6,13 @@
   },
   "imports": {
     "#*": "./src/*.js",
-    "#config/*": "./config/*.js"
+    "#api/*": "./src/api/*.js",
+    "#libs/*": "./src/libs/*.js",
+    "#api": "./src/api/index.js",
+    "#config": "./config/index.js"
   },
   "dependencies": {
+    "@prisma/client": "^6.8.2",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "express": "^5.1",
