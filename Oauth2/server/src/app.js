@@ -10,7 +10,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded())
 
-app.use('/api', routes)
+app.use('/', routes)
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port} 🔥🔥🔥`)

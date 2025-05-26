@@ -10,8 +10,8 @@ const TOKEN_KEY = 'token'
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null)
 
-  const auth = async ({ token }) => {
-    setToken(token)
+  const auth = ({ token }) => {
+    setupToken(token)
   }
 
   const setupToken = (token) => {

@@ -14,7 +14,7 @@ function Login() {
 
     try {
       const { data } = await authApi.login(payload)
-      await auth(data)
+      auth(data)
     } catch (err) {
       setErrors(err.response?.data?.message)
     }
@@ -29,6 +29,15 @@ function Login() {
       <header className="mx-auto w-[400px] mt-10">
         <h1>Sign In</h1>
       </header>
+
+      <div className="mx-auto w-[400px] mt-10">
+        <a
+          href="http://localhost:8000/auth/google"
+          className="mt-8 border border-blue-100 rounded-xl p-3"
+        >
+          Sign in with Google
+        </a>
+      </div>
 
       <form className="mt-8" onSubmit={handleSubmit(onSubmit)}>
         <div className="mx-auto w-[400px]">
