@@ -6,9 +6,9 @@
   },
   "imports": {
     "#*": "./src/*.js",
-    "#api/*": "./src/api/*.js",
+    "#routes/*": "./src/routes/*.js",
     "#libs/*": "./src/libs/*.js",
-    "#api": "./src/api/index.js",
+    "#routes": "./src/routes/index.js",
     "#config": "./config/index.js"
   },
   "dependencies": {

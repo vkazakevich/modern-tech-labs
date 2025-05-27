@@ -14,6 +14,10 @@ export const AuthProvider = ({ children }) => {
     setupToken(token)
   }
 
+  const logout = () => {
+    setupToken(null)
+  }
+
   const setupToken = (token) => {
     if (token) {
       localStorage.setItem(TOKEN_KEY, token)
@@ -33,6 +37,7 @@ export const AuthProvider = ({ children }) => {
   const value = {
     token,
     auth,
+    logout,
     isAuth: !!token
   }
 

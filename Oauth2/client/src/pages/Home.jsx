@@ -2,7 +2,7 @@ import { Navigate } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
 
 function Home() {
-  const { isAuth } = useAuth()
+  const { isAuth, logout } = useAuth()
 
   if (!isAuth) {
     return <Navigate to="/login" replace />
@@ -10,7 +10,15 @@ function Home() {
 
   return (
     <>
-      <h1>Home</h1>
+      <p className="p-3">You're authorized!</p>
+      <p className="p-3">
+        <button
+          onClick={logout}
+          className="border rounded-xl border-red-500 p-3"
+        >
+          Logout
+        </button>
+      </p>
     </>
   )
 }

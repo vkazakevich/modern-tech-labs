@@ -33,9 +33,16 @@ function Login() {
       <div className="mx-auto w-[400px] mt-10">
         <a
           href="http://localhost:8000/auth/google"
-          className="mt-8 border border-blue-100 rounded-xl p-3"
+          className="mt-8 border border-blue-100 rounded-xl p-3 mr-1"
         >
           Sign in with Google
+        </a>
+
+        <a
+          href="http://localhost:8000/auth/github"
+          className="mt-8 border border-blue-100 rounded-xl p-3"
+        >
+          Sign in with GitHub
         </a>
       </div>
 
