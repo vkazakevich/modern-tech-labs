@@ -118,4 +118,6 @@ Kod: [Sonar](./Sonar)
 
 :white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/vkazakevich/ebiznes/commit/66e4b8ca724319c7a93108ed552bfcdcd0f041c7)
 
+:white_check_mark: 4.5 wymaganie 3 [Link do commita 4](https://github.com/vkazakevich/ebiznes/commit/c9f66f58a50d211339f559ac9e790682150f7259)
+
 Kod: [Oauth2](./Oauth2)
