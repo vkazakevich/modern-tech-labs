@@ -110,7 +110,7 @@ Kod: [Tests](./Tests)
 
 Kod: [Sonar](./Sonar)
 
-**Zadanie 8** Oauth2 [WIP]
+**Zadanie 8** Oauth2
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/9c49338f3003fc1379394993700f9a2aee4934fc)
 
@@ -118,6 +118,8 @@ Kod: [Sonar](./Sonar)
 
 :white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/vkazakevich/ebiznes/commit/66e4b8ca724319c7a93108ed552bfcdcd0f041c7)
 
-:white_check_mark: 4.5 wymaganie 3 [Link do commita 4](https://github.com/vkazakevich/ebiznes/commit/c9f66f58a50d211339f559ac9e790682150f7259)
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/vkazakevich/ebiznes/commit/c9f66f58a50d211339f559ac9e790682150f7259)
+
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/vkazakevich/ebiznes/commit/a2475943616d61b2a7928c760847c15b5099b721)
 
 Kod: [Oauth2](./Oauth2)
