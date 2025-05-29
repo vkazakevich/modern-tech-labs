@@ -1,16 +1,9 @@
 import prisma from '#libs/prisma'
 import * as bcrypt from 'bcrypt'
-import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
 import { SALT_ROUND, SECRET_KEY } from '#config'
 
-export const authUserByEmail = async (email) => {
-  const user = await prisma.user.findUnique({
-    where: { email: email }
-  })
-
-  if (!user) return null
-
+export const getJwtTokenForUser = async (user) => {
   const userPayload = {
     id: user.id
   }

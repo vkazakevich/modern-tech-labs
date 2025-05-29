@@ -1,5 +1,10 @@
 import { Router } from 'express'
-import { authUserByEmail, createUserIfNotExist } from '#services/auth'
+import { getJwtTokenForUser } from '#services/auth'
+import {
+  findOrCreateUser,
+  GITHUB_PROVIDER,
+  saveOauthCredentials
+} from '#services/oauth'
 
 const router = Router()
 
@@ -9,7 +14,25 @@ const GITHUB_ACCESS_TOKEN_URL = 'https://github.com/login/oauth/access_token'
 const GITHUB_USER_API = 'https://api.github.com/user'
 const GITHUB_USER_EMAILS_API = 'https://api.github.com/user/emails'
 
+const GITHUB_DEFAULT_TOKEN_EXPIRES = 900
+
 const REDIRECT_URI = 'http://localhost:8000/auth/github/callback'
+
+const fetchUserEmail = async (token) => {
+  const userEmailsResponse = await fetch(GITHUB_USER_EMAILS_API, {
+    headers: {
+      Authorization: 'token ' + token
+    }
+  })
+
+  const emails = await userEmailsResponse.json()
+
+  if (!emails.length) {
+    throw new Error('no user emails')
+  }
+
+  return emails[0].email
+}
 
 router.get('/auth/github', async (req, res) => {
   const params = new URLSearchParams({
@@ -37,35 +60,27 @@ router.get('/auth/github/callback', async (req, res) => {
     })
   })
 
-  const { access_token } = await response.json()
+  const { access_token: accessToken } = await response.json()
 
   const userDataResponse = await fetch(GITHUB_USER_API, {
     headers: {
-      Authorization: 'token ' + access_token
+      Authorization: 'token ' + accessToken
     }
   })
   const userData = await userDataResponse.json()
 
-  let email = userData.email
+  const email = userData.email ?? (await fetchUserEmail(accessToken))
 
-  if (!email) {
-    const userEmailsResponse = await fetch(GITHUB_USER_EMAILS_API, {
-      headers: {
-        Authorization: 'token ' + access_token
-      }
-    })
+  const user = await findOrCreateUser({ fullName: userData.name, email: email })
 
-    const emails = await userEmailsResponse.json()
+  await saveOauthCredentials(
+    GITHUB_PROVIDER,
+    user.id,
+    accessToken,
+    GITHUB_DEFAULT_TOKEN_EXPIRES
+  )
 
-    if (!emails.length) {
-      return res.status(500)
-    }
-
-    email = emails[0].email
-  }
-
-  await createUserIfNotExist({ fullName: userData.name, email: email })
-  const token = await authUserByEmail(email)
+  const token = await getJwtTokenForUser(user)
 
   res.redirect(`http://localhost:5173/auth/token?token=${token}`)
 })

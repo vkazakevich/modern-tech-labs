@@ -1,6 +1,11 @@
 import { Router } from 'express'
 import crypto from 'crypto'
-import { authUserByEmail, createUserIfNotExist } from '#services/auth'
+import { getJwtTokenForUser } from '#services/auth'
+import {
+  saveOauthCredentials,
+  GOOGLE_PROVIDER,
+  findOrCreateUser
+} from '#services/oauth'
 
 const router = Router()
 
@@ -46,14 +51,19 @@ router.get('/auth/google/callback', async (req, res) => {
     body: JSON.stringify(params)
   })
 
-  const { id_token } = await response.json()
+  const { id_token, access_token, expires_in } = await response.json()
   const userInfoResponse = await fetch(
     `${GOOGLE_TOKEN_INFO_URL}?id_token=${id_token}`
   )
   const userInfo = await userInfoResponse.json()
 
-  await createUserIfNotExist({ fullName: userInfo.name, email: userInfo.email })
-  const token = await authUserByEmail(userInfo.email)
+  const user = await findOrCreateUser({
+    fullName: userInfo.name,
+    email: userInfo.email
+  })
+  await saveOauthCredentials(GOOGLE_PROVIDER, user.id, access_token, expires_in)
+
+  const token = await getJwtTokenForUser(user)
 
   res.redirect(`http://localhost:5173/auth/token?token=${token}`)
 })
