@@ -29,3 +29,7 @@ https://github.com/user-attachments/assets/4ec94cc4-1e9b-42ce-9c2c-f388acc00f38
 https://github.com/user-attachments/assets/e4eead10-f44b-4d47-831b-7d3e38444304
 
 
+## Oauth2
+
+https://github.com/user-attachments/assets/8f27624a-5a05-420d-ad2e-8528a8569146
+
