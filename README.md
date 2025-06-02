@@ -124,13 +124,17 @@ Kod: [Sonar](./Sonar)
 
 Kod: [Oauth2](./Oauth2)
 
-**Zadanie 9** Llama Bot [WIP]
+**Zadanie 9** Llama Bot
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/8c3d60eb943359ef2eab7fdd9ddd98d710fda4b2)
 
 :white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/vkazakevich/ebiznes/commit/ca74c3f3af43cd29f5f566220b5294289327e1d3)
 
 :white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/vkazakevich/ebiznes/commit/499492ce8f11b1d832c9957500a9f143b4420e8f)
+
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/vkazakevich/ebiznes/commit/2b30cffd1a6144e3df05a88b3785b97b901315fd)
+
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/vkazakevich/ebiznes/commit/29ed6177d9a7f44f05c1e2c2f65fd415969685e3)
 
 
 Kod: [LlamaBot](./LlamaBot)
