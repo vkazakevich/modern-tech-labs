@@ -20,7 +20,7 @@
         v-if="submitting"
         class="border border-green-300 p-3 mb-5 w-70 rounded w-full max-w-[360px] ml-auto"
       >
-        <strong>Agent:</strong> writing...
+        <strong>Agent:</strong> Typing...
       </p>
     </ul>
 
