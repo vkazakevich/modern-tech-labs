@@ -26,7 +26,7 @@
 
     <form @submit.prevent="submit">
       <textarea
-        v-model="form.content"
+        v-model.trim="form.content"
         class="p-3 border border-blue-500 rounded w-full"
       />
       <button
@@ -48,7 +48,7 @@ const BASE_URL = 'http://localhost:8000'
 export default {
   data: () => ({
     form: {
-      content: null
+      content: ''
     },
     messages: [],
     submitting: false
@@ -56,20 +56,15 @@ export default {
 
   methods: {
     async submit() {
-      this.submitting = true
-
       const content = this.form.content
+
+      if (content == '') {
+        return false
+      }
       this.clearForm()
 
       this.addMessage(content)
-
-      const { data } = await axios.post(`${BASE_URL}/send_question`, {
-        content
-      })
-
-      this.addMessage(data.content, true)
-
-      this.submitting = false
+      await this.sendMessage(content)
     },
 
     addMessage(content, isAgent = false) {
@@ -84,9 +79,25 @@ export default {
       })
     },
 
+    async sendMessage(content) {
+      this.submitting = true
+
+      const { data } = await axios.post(`${BASE_URL}/chat`, {
+        content
+      })
+
+      this.addMessage(data.content, true)
+
+      this.submitting = false
+    },
+
     clearForm() {
       this.form.content = null
     }
+  },
+
+  created() {
+    this.sendMessage('START_CHAT')
   }
 }
 </script>
