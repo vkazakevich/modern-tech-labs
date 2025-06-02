@@ -16,6 +16,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+def is_store_related(message):
+    relevant_keywords = [
+        "order", "payment", "product", "shipping", "return", "exchange",
+        "cart", "account", "buy", "track", "checkout", "dress", "shirt",
+        "jeans", "shoes", "jacket", "size", "color", "material", "fit",
+        "price", "sale", "stock", "help", "issue", "problem", "money",
+        "quality", "product", "help", "support"
+    ]
+
+    is_relevant = False
+    for keyword in relevant_keywords:
+        if keyword in message.lower():
+            is_relevant = True
+            break
+
+    return is_relevant
+
+
 OPEN_TEMPLATES = (
     "Hi! How can I help?",
     "Support here. How can I assist?",
@@ -47,6 +66,11 @@ def send_message(message: Message):
     if message.content.strip() == "[START_CHAT]":
         return {
             "content": open_message
+        }
+
+    if is_store_related(message.content) == False:
+        return {
+            "content": "It seems this isn't about our store. Can I help with products or orders?"
         }
 
     system_prompt = f"""
