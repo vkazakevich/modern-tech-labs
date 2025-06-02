@@ -97,7 +97,7 @@ export default {
   },
 
   created() {
-    this.sendMessage('START_CHAT')
+    this.sendMessage('[START_CHAT]')
   }
 }
 </script>

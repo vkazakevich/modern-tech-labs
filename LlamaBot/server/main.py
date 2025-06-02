@@ -44,11 +44,15 @@ def send_message(message: Message):
     start_prompt = random.choice(OPEN_TEMPLATES)
     end_prompt = random.choice(CLOSE_TEMPLATES)
 
+    if message.content.strip() == "[START_CHAT]":
+        return {
+            "content": start_prompt
+        }
+
     system_prompt = f"""
-    AI: helpful, concise, friendly.
-    - If user's first message is exactly `START_CHAT`: Reply only with "{start_prompt}".
-    - If user signals conversation end (e.g., "thank you", "solved", "goodbye", "that's all"): Reply only with "{end_prompt}". This must be your entire response.
-    - All other replies: Address the user's query or statement directly. If the user says "hi" or a similar greeting *after the conversation has started*, do NOT use "{start_prompt}" or any other formal greeting. Instead, you can briefly acknowledge their greeting (e.g., "Hi there!" or simply "Hello!") and then continue the ongoing conversation, or just proceed with the current topic without a separate acknowledgment if that feels more natural. Avoid repeated formal greetings.
+AI for online clothing store.
+- User signals end (e.g., "thank you", "solved", "goodbye", "that's all"): Reply only with "{end_prompt}". (Entire response).
+- Other replies: Answer user's query directly. If user says "hi" or a similar greeting standalone mid-conversation, do NOT greet back. Continue with the current topic or await their actual query. You should not send any greetings at any time.
     """
 
     response: ChatResponse = client.chat(model='llama3.2', messages=[
