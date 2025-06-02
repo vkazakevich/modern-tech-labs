@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from ollama import chat, Client, ChatResponse
+from ollama import Client, ChatResponse
 from pydantic import BaseModel
+from textblob import TextBlob
 import random
 
 app = FastAPI()
@@ -15,6 +16,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+def is_non_negative(content):
+    blob = TextBlob(content)
+    return blob.sentiment.polarity >= 0
 
 
 def is_store_related(message):
@@ -89,6 +95,11 @@ def send_message(message: Message):
             'content': message.content,
         },
     ])
+
+    if is_non_negative(response.message.content) == False:
+        return {
+            "content": "Sorry, I can't answer that request."
+        }
 
     return {
         "content": response.message.content
