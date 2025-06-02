@@ -123,3 +123,10 @@ Kod: [Sonar](./Sonar)
 :white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/vkazakevich/ebiznes/commit/a2475943616d61b2a7928c760847c15b5099b721)
 
 Kod: [Oauth2](./Oauth2)
+
+**Zadanie 9** Llama Bot [WIP]
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/8c3d60eb943359ef2eab7fdd9ddd98d710fda4b2)
+
+
+Kod: [LlamaBot](./LlamaBot)
