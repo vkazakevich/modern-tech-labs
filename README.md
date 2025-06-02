@@ -138,3 +138,5 @@ Kod: [Oauth2](./Oauth2)
 
 
 Kod: [LlamaBot](./LlamaBot)
+
+**Zadanie 10** Chmura/CI [WIP]
