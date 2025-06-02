@@ -128,5 +128,7 @@ Kod: [Oauth2](./Oauth2)
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/8c3d60eb943359ef2eab7fdd9ddd98d710fda4b2)
 
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/vkazakevich/ebiznes/commit/ca74c3f3af43cd29f5f566220b5294289327e1d3)
+
 
 Kod: [LlamaBot](./LlamaBot)
