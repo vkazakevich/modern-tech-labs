@@ -33,3 +33,7 @@ https://github.com/user-attachments/assets/e4eead10-f44b-4d47-831b-7d3e38444304
 
 https://github.com/user-attachments/assets/8f27624a-5a05-420d-ad2e-8528a8569146
 
+## LlamaBot
+
+https://github.com/user-attachments/assets/5ce308f4-3343-4b31-8141-8146f1b86722
+
