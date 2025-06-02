@@ -41,18 +41,18 @@ class Message(BaseModel):
 def send_message(message: Message):
     client = Client(host='http://host.docker.internal:11434')
 
-    start_prompt = random.choice(OPEN_TEMPLATES)
-    end_prompt = random.choice(CLOSE_TEMPLATES)
+    open_message = random.choice(OPEN_TEMPLATES)
+    end_message = random.choice(CLOSE_TEMPLATES)
 
     if message.content.strip() == "[START_CHAT]":
         return {
-            "content": start_prompt
+            "content": open_message
         }
 
     system_prompt = f"""
-AI for online clothing store.
-- User signals end (e.g., "thank you", "solved", "goodbye", "that's all"): Reply only with "{end_prompt}". (Entire response).
-- Other replies: Answer user's query directly. If user says "hi" or a similar greeting standalone mid-conversation, do NOT greet back. Continue with the current topic or await their actual query. You should not send any greetings at any time.
+    AI for online clothing store.
+    - User signals end (e.g., "thank you", "solved", "goodbye", "that's all"): Reply only with "{end_message}". (Entire response).
+    - Other replies: Answer user's query directly. If user says "hi" or a similar greeting standalone mid-conversation, do NOT greet back. Continue with the current topic or await their actual query. You should not send any greetings at any time.
     """
 
     response: ChatResponse = client.chat(model='llama3.2', messages=[
@@ -68,12 +68,4 @@ AI for online clothing store.
 
     return {
         "content": response.message.content
-    }
-
-
-@app.get("/templates")
-def read_templates():
-    return {
-        "open": OPEN_TEMPLATES,
-        "close": CLOSE_TEMPLATES
     }
