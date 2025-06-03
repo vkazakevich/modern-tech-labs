@@ -139,4 +139,7 @@ Kod: [Oauth2](./Oauth2)
 
 Kod: [LlamaBot](./LlamaBot)
 
-**Zadanie 10** Chmura/CI [WIP]
+**Zadanie 10** Chmura/CI **[WIP]**
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/vkazakevich/ebiznes/commit/293d1827446eaf835d03959ba419c75ee785c488)
+
