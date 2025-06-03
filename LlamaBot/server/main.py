@@ -18,12 +18,12 @@ app.add_middleware(
 )
 
 
-def is_non_negative(content):
+def is_negative(content):
     blob = TextBlob(content)
     return blob.sentiment.polarity >= 0
 
 
-def is_store_related(message):
+def is_non_store_related(message):
     relevant_keywords = [
         "order", "payment", "product", "shipping", "return", "exchange",
         "cart", "account", "buy", "track", "checkout", "dress", "shirt",
@@ -74,7 +74,7 @@ def send_message(message: Message):
             "content": open_message
         }
 
-    if is_store_related(message.content) == False:
+    if is_non_store_related(message.content):
         return {
             "content": "It seems this isn't about our store. Can I help with products or orders?"
         }
@@ -96,7 +96,7 @@ def send_message(message: Message):
         },
     ])
 
-    if is_non_negative(response.message.content) == False:
+    if is_negative(response.message.content):
         return {
             "content": "Sorry, I can't answer that request."
         }
