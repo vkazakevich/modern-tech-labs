@@ -47,11 +47,11 @@ jobs:
           curl -s -X POST --user "${{ secrets.MAILJET_API_KEY }}:${{ secrets.MAILJET_API_SECRET }}" \
           https://api.mailjet.com/v3/send \
           -H 'Content-Type: application/json' \
-          -d '{
-            "FromEmail": "${{ secrets.EMAIL_FROM }}",
-            "FromName":"${{ secrets.FROM_EMAIL }}",
-            "Subject":"${{ env.REPO }} Client: Build Result",
-            "Text-part":"Build result: ${{ needs.build.result }}",
-            "Recipients":[{"Email":"${{ secrets.EMAIL_TO }}"}]
-          }'
+          -d "{
+            \"FromEmail\": \"${{ secrets.FROM_EMAIL }}\",
+            \"FromName\": \"${{ secrets.FROM_NAME }}\",
+            \"Subject\": \"Build Result\",
+            \"Text-part\": \"Build result: ${{ needs.build.result }}\",
+            \"Recipients\": [{\"Email\": \"${{ secrets.EMAIL_TO }}\"}]
+          }"
           
