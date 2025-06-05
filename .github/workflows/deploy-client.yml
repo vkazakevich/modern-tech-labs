@@ -2,8 +2,8 @@ name: Deploy Client
 
 on:
   push:
-    paths:
-      - 'Frontend/client/**'
+    # paths:
+    #   - 'Frontend/client/**'
 
 permissions:
   contents: 'read'
@@ -33,6 +33,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
+          tags: ghcr.io/${{ env.REPO }}/client:${{ github.sha }}
           file: Frontend/client/Dockerfile
           context: ./Frontend/client
