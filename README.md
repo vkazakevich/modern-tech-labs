@@ -145,3 +145,5 @@ Kod: [LlamaBot](./LlamaBot)
 
 :white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/vkazakevich/ebiznes/commit/0d8aedbedeb7492e959750133939e0c662e67407)
 
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/vkazakevich/ebiznes/commit/795309533535c304456257d2810e9025cfa82b14)
+
