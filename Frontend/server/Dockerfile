@@ -11,4 +11,4 @@ RUN go build server.go
 
 EXPOSE 8000
 
-CMD [ "go", "run", "server.go" ]
+CMD [ "go", "run", "server.go", "--seed" ]
