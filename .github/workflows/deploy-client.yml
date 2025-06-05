@@ -52,9 +52,3 @@ jobs:
           body: The build has been finished with ${{ needs.build.result }} status.
           to: ${{ secrets.TO_EMAIL }}
           from: ${{ secrets.FROM_NAME }}
-          debug: true
-
-      - name: Debug env
-        run: |
-          echo "User: ${{ secrets.EMAIL_USERNAME }}"
-          echo "To: ${{ secrets.TO_EMAIL }}"
