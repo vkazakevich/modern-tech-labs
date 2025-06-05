@@ -27,7 +27,7 @@ func main() {
 	e := echo.New()
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-        AllowOrigins: []string{"http://localhost:5173"},
+        AllowOrigins: []string{"http://localhost:5173", "https://ebiznes-front-end-gaapf2f4crfjh7br.polandcentral-01.azurewebsites.net"},
         AllowMethods: []string{"GET", "POST"},
     }))
 
