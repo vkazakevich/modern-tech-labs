@@ -2,6 +2,8 @@ name: Deploy Client
 
 on:
   push:
+    paths:
+      - 'Frontend/client/**'
 
 permissions:
   contents: 'read'
