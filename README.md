@@ -151,3 +151,5 @@ Kod: [LlamaBot](./LlamaBot)
 
 :white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/vkazakevich/ebiznes/commit/a60c985edf9a1ca4e15d5c60545af44f1fc7eb13)
 
+
+Kod: [Cloud](./Cloud)
