@@ -18,7 +18,7 @@ function Products() {
 
   return (
     <>
-      <h1>Products</h1>
+      <h1>Products Test</h1>
       <div>
         Products in cart: {cartItemsCount}
         <br />
