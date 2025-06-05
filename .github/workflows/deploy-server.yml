@@ -1,7 +1,8 @@
 name: Deploy Server
 
-env:
-  WORKING_DIRECTORY: ./Frontend/server
+defaults:
+  run:
+    working-directory: ./Frontend/server
 
 on:
   push:
@@ -38,4 +39,4 @@ jobs:
           push: true
           tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
           file: ./Dockerfile
-          context: ${{ env.WORKING_DIRECTORY }}
+          context: /Frontend/server
