@@ -36,3 +36,22 @@ jobs:
           tags: ghcr.io/${{ env.REPO }}/client:${{ github.sha }}
           file: Frontend/client/Dockerfile
           context: ./Frontend/client
+          
+  build-notify:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Email Notification
+        run: |
+          curl -s -X POST --user "${{ secrets.MAILJET_API_KEY }}:${{ secrets.MAILJET_API_SECRET }}" \
+          https://api.mailjet.com/v3/send \
+          -H 'Content-Type: application/json' \
+          -d '{
+            "FromEmail": "${{ secrets.EMAIL_FROM }}",
+            "FromName":"${{ secrets.FROM_EMAIL }}",
+            "Subject":"${{ env.REPO }} Client: Build Result",
+            "Text-part":"Build result: ${{ needs.build.result }}",
+            "Recipients":[{"Email":"${{ secrets.EMAIL_TO }}"}]
+          }'
+          
