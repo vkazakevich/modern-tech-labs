@@ -14,6 +14,7 @@ import (
 
 func main() {
 	var fillSeeds bool
+	
 	flag.BoolVar(&fillSeeds, "seed", false, "a bool")
 	flag.Parse()
 
