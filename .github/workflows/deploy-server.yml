@@ -1,9 +1,5 @@
 name: Deploy Server
 
-defaults:
-  run:
-    working-directory: ./Frontend/server
-
 on:
   push:
     paths:
@@ -38,5 +34,5 @@ jobs:
         with:
           push: true
           tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
-          file: ./Dockerfile
-          context: /Frontend/server
+          file: Frontend/server/Dockerfile
+          context: ./Frontend/server

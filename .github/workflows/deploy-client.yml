@@ -1,9 +1,5 @@
 name: Deploy Client
 
-defaults:
-  run:
-    working-directory: ./Frontend/client
-
 on:
   push:
     paths:
@@ -38,5 +34,5 @@ jobs:
         with:
           push: true
           tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
-          file: ./Dockerfile
+          file: Frontend/client/Dockerfile
           context: ./Frontend/client
