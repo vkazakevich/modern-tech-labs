@@ -42,16 +42,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Send Email Notification
-        run: |
-          curl -s -X POST --user "${{ secrets.MAILJET_API_KEY }}:${{ secrets.MAILJET_API_SECRET }}" \
-          https://api.mailjet.com/v3/send \
-          -H 'Content-Type: application/json' \
-          -d "{
-            \"FromEmail\": \"${{ secrets.FROM_EMAIL }}\",
-            \"FromName\": \"${{ secrets.FROM_NAME }}\",
-            \"Subject\": \"Build Result\",
-            \"Text-part\": \"Build result: ${{ needs.build.result }}\",
-            \"Recipients\": [{\"Email\": \"${{ secrets.EMAIL_TO }}\"}]
-          }"
-          
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v5
+      with:
+        server_address: ${{ secrets.SMTP_ADDRESS }}
+        server_port: 465
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: Build Client (${{ github.repository }}) — ${{ needs.build.result }}
+        body: The build has been finished with ${{ needs.build.result }} status.
+        to: ${{ secrets.TO_EMAIL }}
+        from: ${{ secrets.FROM_NAME }}
