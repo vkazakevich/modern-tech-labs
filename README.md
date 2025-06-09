@@ -154,4 +154,4 @@ Kod: [LlamaBot](./LlamaBot)
 
 Kod: [Cloud](./Cloud)
 
-Demo: [Link](https://ebiznes-front-end-gaapf2f4crfjh7br.polandcentral-01.azurewebsites.net/)
+Link: [Link](https://ebiznes-front-end-gaapf2f4crfjh7br.polandcentral-01.azurewebsites.net/)
